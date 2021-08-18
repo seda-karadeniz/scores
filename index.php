@@ -1,7 +1,7 @@
 <?php
 
 define('TODAY', (new DateTime('now', new DateTimeZone('Europe/Brussels')))->format('M jS, Y')); /*M=month, j= jour sans le 0 devant S= suffix exemple th ou nd Y= year 4chiffre */
-$filePath = 'matches.csv';
+define('FILE_PATH', 'matches.csv');
 $matches = [];
 $standings = [];
 $teams = [];
@@ -20,7 +20,7 @@ function getEmptyStatsArray(){
 }
 
 
-$handle = fopen($filePath,'r'); /*file open .. r=read*/
+$handle = fopen(FILE_PATH,'r'); /*file open .. r=read*/
 $headers = fgetcsv($handle,1000);
 while ($line = fgetcsv($handle,1000)){
     $match = array_combine($headers, $line); /*affecter ca au tableau comme push en js*/
@@ -71,6 +71,7 @@ uasort($standings, function ($a, $b){
 });
 
 $teams = array_keys($standings);
+sort($teams);
 /*toutes les valeur des equipes sont dans standings alors on met tte les clé dans teams*/
 
 

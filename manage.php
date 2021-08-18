@@ -1,4 +1,5 @@
 <?php
+
 define('FILE_PATH', 'matches.csv');
 
 function appendArrayToCSV(array $array, string $csvFile)
@@ -23,3 +24,7 @@ if (isset($_POST['action']) && isset($_POST['resource'])) {
 }
 header('Location: index.php');
 exit();
+
+/*refr une redirection vers la page index.php .. mettre exit ou die apres pcq sinon va continuer à lire le reste*/
+
+
